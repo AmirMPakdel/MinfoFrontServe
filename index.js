@@ -4,7 +4,7 @@ const app = express();
 
 const dynamic_routes = [
     "/course",
-    "/dashboar/editCourse",
+    "/dashboard/editCourse",
 ]
 
 app.use(function (req, res, next) {
