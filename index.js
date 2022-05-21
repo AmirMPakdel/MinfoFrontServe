@@ -3,31 +3,46 @@ const path = require('path');
 const app = express();
 
 const dynamic_routes = [
-    "/course",
+    {url:"/course", src:"/course/[id]/[title].html"},
     "/dashboard/editCourse",
+    "/dashboard/previewCourse",
+    "/dashboard/salesReceipt",
+    "/courseInvoice",
+    "/store",
 ]
 
 app.use(function (req, res, next) {
+
+    let url_matches_dynamics = urlMatchesDynamics(req.url) ;
 
     if(req.url == "/"){
 
         req.url+="index.html";
 
-    }else if(urlMatchesDynamics(req.url)){
+    }else if(url_matches_dynamics){
 
-        req.url = urlMatchesDynamics(req.url);
+        console.log("yes->"+url_matches_dynamics);
+        req.url = url_matches_dynamics;
 
     }else{
 
-        let array1 = req.url.split("/");
-        let file_name = array1[array1.length-1];
+        let url_part = req.url.split("?")[0];
 
-        let array2 = file_name.split(".");
-        //let ext = array2[array2.length-1];
-
-        if(array2.length == 1){
-            req.url+=".html";
+        if(url_part.charAt(url_part.length-1) == "/"){
+            url_part = url_part.slice(0, url_part.length-1);
         }
+
+        let slash_array = url_part.split("/");
+
+        let file_name = slash_array[slash_array.length-1];
+
+        let name_array = file_name.split(".");
+        
+        if(name_array.length == 1){
+            url_part+=".html";
+        }
+
+        req.url = url_part;
     }
     
     next();
@@ -46,11 +61,19 @@ function urlMatchesDynamics(url){
 
     dynamic_routes.forEach((r)=>{
 
-        let index = url.search(r);
+        if(typeof r == "object"){
 
-        if(index == 0){
+            let index = url.search(r.url);
+            if(index == 0){
+                dynamic_file_url = r.src;
+            }
 
-            dynamic_file_url = r+".html"
+        }else{
+
+            let index = url.search(r);
+            if(index == 0){
+                dynamic_file_url = r+".html"
+            }
         }
     });
 
