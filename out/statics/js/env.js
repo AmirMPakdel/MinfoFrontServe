@@ -1,6 +1,6 @@
 var env = {
 
-    ENVIRONMENT_MODE: "dev",
+    ENVIRONMENT_MODE: "auto", // dev | prd | auto
 
     MOCKING_SERVER: false,
 
@@ -61,6 +61,7 @@ var env = {
         COURSE_INVOICE: "/courseInvoice/",
         STUDENT_CHANGE_PASSWORD: "/changePassword",
         //user dashboard
+        USER_DASHBOARD: "/dashboard",
         USER_OVERVIEW: "/dashboard/overview",
         USER_MYCOURSES: "/dashboard/myCourses",
         USER_NEW_COURSE: "/dashboard/newCourse",
