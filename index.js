@@ -9,6 +9,7 @@ const dynamic_routes = [
     "/dashboard/salesReceipt",
     "/courseInvoice",
     "/store",
+    {url:"/course", src:"/course/[id].html"},
 ]
 
 app.use(function (req, res, next) {
