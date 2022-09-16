@@ -8,6 +8,8 @@ var env = {
 
     SMS_TIMER: 120,
 
+    TIMER_INTERVAL: 1000,
+
     TENANT_KEY: "__mgnftnt",
 
     TOKEN_KEY: "__mgnftk",
@@ -20,7 +22,7 @@ var env = {
 
     MEDIA_PREFIX: "http://dl1.minfo.ir",
 
-    VERIFICATION_CODE_LENGTH : 4,
+    VERIFICATION_CODE_LENGTH : 5,
 
     LIMITS:{
         TOTAL_EDUCATOR_LIMIT: 100,
