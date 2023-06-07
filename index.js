@@ -10,6 +10,7 @@ const dynamic_routes = [
     "/dashboard/salesReceipt",
     "/courseInvoice",
     "/store",
+    "/minfo",
 ]
 
 app.use(function (req, res, next) {
@@ -22,7 +23,7 @@ app.use(function (req, res, next) {
 
     }else if(url_matches_dynamics){
 
-        console.log("yes->"+url_matches_dynamics);
+        //console.log("yes->"+url_matches_dynamics);
         req.url = url_matches_dynamics;
 
     }else{
@@ -53,7 +54,7 @@ app.use(express.static(path.join(__dirname, 'out')));
 
 
 app.listen("4060", ()=>{
-    console.log("listening on 4060");
+    //console.log("listening on 4060");
 });
 
 function urlMatchesDynamics(url){
