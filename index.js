@@ -10,7 +10,6 @@ const dynamic_routes = [
     "/dashboard/salesReceipt",
     "/courseInvoice",
     "/store",
-    "/minfo",
 ]
 
 app.use(function (req, res, next) {
